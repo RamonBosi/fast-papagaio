@@ -8,4 +8,8 @@ export const GlobalStyles = createGlobalStyle`
     --default-white: rgba(255, 255, 255);
     --default-black: rgba(0, 0, 0);
   }
+
+  body{
+    background-color: var(--page-background-color);
+  }
 `
