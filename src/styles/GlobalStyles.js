@@ -12,4 +12,8 @@ export const GlobalStyles = createGlobalStyle`
   body{
     background-color: var(--page-background-color);
   }
+
+  a{
+    text-decoration: none;
+  }
 `
