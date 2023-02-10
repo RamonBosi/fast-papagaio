@@ -1,11 +1,15 @@
 import { MyNavBar } from "@/components/MyNavBar";
+import { AllProducts } from "./components/AllProducts";
 
 export function ShoppingCartTemplate(){
 
   return(
     <>
       <MyNavBar/>
-      <h1>Carrinho de compras</h1>
+      <main className="d-flex flex-column mt-4">
+        <h1 className="align-self-center mb-3">Carrinho de compras</h1>
+        <AllProducts/>
+      </main>
     </>
   )
 }

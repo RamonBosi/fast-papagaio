@@ -16,4 +16,8 @@ export const GlobalStyles = createGlobalStyle`
   a{
     text-decoration: none;
   }
+
+  p{
+    margin: 0 !important;
+  }
 `
