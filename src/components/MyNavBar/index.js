@@ -14,7 +14,7 @@ export const MyNavBar = () => {
         <option value="3">Televisão</option>
       </Form.Select>
       <div>
-        <Link passHref href="/shopping-cart">
+        <Link passHref href="/carrinho-de-compra">
           <i className="bi bi-cart-fill text-white p-1 fs-4"></i>
         </Link>
       </div>

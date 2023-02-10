@@ -1,5 +1,5 @@
 import Image from "next/image"
-import brandImage from '@/assets/brandImage/brandImage.png'
+import brandImage from '@/assets/img/brandImage/brandImage.png'
 import Link from "next/link"
 import { Concert_One } from '@next/font/google'
 
