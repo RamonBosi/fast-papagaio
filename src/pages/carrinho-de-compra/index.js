@@ -1,11 +1,6 @@
-import { MyNavBar } from "@/components/MyNavBar";
+import { ShoppingCartTemplate } from "@/templates/ShoppingCart";
 
 export default function ShoppingCart(){
 
-  return(
-    <>
-      <MyNavBar/>
-      <h1>Carrinho de compras</h1>
-    </>
-  )
+  return <ShoppingCartTemplate/>
 }
