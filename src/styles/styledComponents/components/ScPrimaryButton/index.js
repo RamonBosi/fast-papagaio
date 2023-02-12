@@ -9,6 +9,6 @@ export const ScPrimaryButton = styled.button`
   color: rgba(${props => props.theme.color});
 
   &:hover{
-    background-color: rgba(${props => props.theme.backgroundColor},.85);
+    background-color: rgba(${props => props.theme.hoverBackgroundColor});
   }
 `

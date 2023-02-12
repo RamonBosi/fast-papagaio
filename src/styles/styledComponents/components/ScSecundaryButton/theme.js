@@ -1,4 +1,7 @@
+// Os valores das propriedades do thema são valores utilizados no método 'rgba' do css
+
 export const themeScSecundaryButton = { 
-  backgroundColor: '120, 108, 148', 
-  color: '255, 255, 255' 
+  backgroundColor: '255,255,255,0', 
+  color: '83, 62, 133',
+  hoverBackgroundColor: '255,255,255,0'
 }
