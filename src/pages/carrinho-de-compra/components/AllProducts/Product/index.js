@@ -1,4 +1,7 @@
+import { ThemeProvider } from "styled-components";
 import { ScTruncatedParagraph } from "./styles";
+import { ScButtonPrimary, ScButtonSecundary } from '@/styles/styledComponents/components/Buttons'
+import { themeScButtonPrimary, themeScButtonSecundary } from "@/styles/styledComponents/components/Buttons/themes";
 
 export function Product({ name, value, amount }) {
 
@@ -19,9 +22,15 @@ export function Product({ name, value, amount }) {
           <p className="d-none">Estoque: {amount}</p>
         </div>
       </div>
-      <div>
-        <button>Excluir</button>
-        <button>Comprar agora</button>
+      <div className="d-flex gap-1">
+        <ThemeProvider
+          theme={themeScButtonSecundary}>
+          <ScButtonSecundary>Excluir</ScButtonSecundary>
+        </ThemeProvider>
+        <ThemeProvider
+          theme={themeScButtonPrimary}>
+          <ScButtonPrimary>Comprar agora</ScButtonPrimary>
+        </ThemeProvider>
       </div>
     </div>
   )
