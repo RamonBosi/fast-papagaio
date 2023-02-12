@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ScButtonPrimary = styled.button`
+export const ScPrimaryButton = styled.button`
   padding: 8px;
   border: none;
   border-radius: 10px;
@@ -12,5 +12,3 @@ export const ScButtonPrimary = styled.button`
     background-color: rgba(${props => props.theme.backgroundColor},.85);
   }
 `
-
-export const ScButtonSecundary = styled(ScButtonPrimary)``

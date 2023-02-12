@@ -1,7 +1,11 @@
 import { ThemeProvider } from "styled-components";
+
+import { ScPrimaryButton } from "@/styles/styledComponents/components/ScPrimaryButton";
+import { ScSecundaryButton } from "@/styles/styledComponents/components/ScSecundaryButton";
+import { themeScPrimaryButton } from "@/styles/styledComponents/components/ScPrimaryButton/theme";
+import { themeScSecundaryButton } from "@/styles/styledComponents/components/ScSecundaryButton/theme";
 import { ScTruncatedParagraph } from "./styles";
-import { ScButtonPrimary, ScButtonSecundary } from '@/styles/styledComponents/components/Buttons'
-import { themeScButtonPrimary, themeScButtonSecundary } from "@/styles/styledComponents/components/Buttons/themes";
+
 
 export function Product({ name, value, amount }) {
 
@@ -24,12 +28,12 @@ export function Product({ name, value, amount }) {
       </div>
       <div className="d-flex gap-1">
         <ThemeProvider
-          theme={themeScButtonSecundary}>
-          <ScButtonSecundary>Excluir</ScButtonSecundary>
+          theme={themeScSecundaryButton}>
+          <ScSecundaryButton>Excluir</ScSecundaryButton>
         </ThemeProvider>
         <ThemeProvider
-          theme={themeScButtonPrimary}>
-          <ScButtonPrimary>Comprar agora</ScButtonPrimary>
+          theme={themeScPrimaryButton}>
+          <ScPrimaryButton>Comprar agora</ScPrimaryButton>
         </ThemeProvider>
       </div>
     </div>
