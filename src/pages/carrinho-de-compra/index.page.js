@@ -1,7 +1,7 @@
 import { MyNavBar } from "@/components/MyNavBar";
 import { AllProducts } from "./components/AllProducts";
 
-export function ShoppingCartTemplate(){
+export default function ShoppingCart(){
 
   return(
     <>

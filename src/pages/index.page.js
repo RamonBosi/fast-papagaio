@@ -1,9 +1,9 @@
 import { MyNavBar } from "@/components/MyNavBar";
 
-export function HomeTemplate() {
+export default function Home() {
   return (
-   <>
+    <>
       <MyNavBar/>
-   </>
+    </>
   )
 }
