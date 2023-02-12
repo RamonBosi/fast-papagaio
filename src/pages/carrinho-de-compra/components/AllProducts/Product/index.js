@@ -5,13 +5,13 @@ import { ScSecundaryButton } from "@/styles/styledComponents/components/ScSecund
 import { themeScPrimaryButton } from "@/styles/styledComponents/components/ScPrimaryButton/theme";
 import { themeScSecundaryButton } from "@/styles/styledComponents/components/ScSecundaryButton/theme";
 import { ScTruncatedParagraph } from "./styles";
-
+import { QuantitySelector } from "./components/QuantitySelector";
 
 export function Product({ name, value, amount }) {
 
   return (
-    <div>
-      <div className="d-flex flex-column flex-sm-row justify-content-sm-between">
+    <div className="d-flex flex-column gap-2">
+      <div className="d-flex flex-column flex-sm-row justify-content-sm-between gap-1">
         <div className="d-flex gap-2">
           <div>
             <div style={{ width: '48px', height: '48px', backgroundColor: 'darkslategray' }}></div>
@@ -20,9 +20,9 @@ export function Product({ name, value, amount }) {
             {name}
           </ScTruncatedParagraph>
         </div>
-        <div className="d-flex justify-content-around gap-sm-2">
-          <div>Seletor de quantidade</div>
-          <p>R$ {value}</p>
+        <div className="d-flex justify-content-around align-items-center gap-sm-2">
+          <QuantitySelector/>
+          <strong className="fs-5">R$ {value}</strong>
           <p className="d-none">Estoque: {amount}</p>
         </div>
       </div>
