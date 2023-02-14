@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ScPrimaryButton = styled.button`
+export const ScButton = styled.button`
   padding: 8px;
   border: none;
   border-radius: 10px;
