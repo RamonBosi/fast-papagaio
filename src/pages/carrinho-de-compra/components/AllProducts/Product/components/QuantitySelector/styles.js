@@ -24,11 +24,16 @@ export const ScQuantitySelector = styled.div`
     width: 90px;
     height: 30px;
     border: none;
-    border-top:2px solid rgba(83, 62, 133);
-    border-bottom:2px solid rgba(83, 62, 133);
+    border-top:0.50px solid rgba(83, 62, 133);
+    border-bottom:0.50px solid rgba(83, 62, 133);
     outline: none;
     text-align: center;
     -moz-appearance: textfield;
+
+    &:focus{
+      border-top:2px solid rgba(83, 62, 133);
+      border-bottom:2px solid rgba(83, 62, 133);
+    }
 
     &::-webkit-outer-spin-button,&::-webkit-inner-spin-button {
       -webkit-appearance: none;
