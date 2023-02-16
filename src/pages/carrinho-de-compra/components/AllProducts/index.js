@@ -63,7 +63,7 @@ export function AllProducts() {
         </div>
         <div>
           <Link passHref href="/forma-de-pagamento">
-            <ScButton theme={primaryButton} className="fs-2 px-3 py-2">Comprar</ScButton>
+            <ScButton theme={primaryButton} className="fs-4 px-3 py-2">Continuar compra</ScButton>
           </Link>
         </div>
       </div>
