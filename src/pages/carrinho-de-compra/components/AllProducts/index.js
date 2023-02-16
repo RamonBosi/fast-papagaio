@@ -32,31 +32,38 @@ export function AllProducts() {
     <div className="d-flex flex-column gap-2 p-2">
       {loadProducts || <></>}
       <div className="d-flex flex-column align-items-end gap-2 fs-5">
-        <div className="d-flex gap-2">
+        <div className="d-flex gap-2 mb-2">
           <p>Frete:</p>
           <strong>R$20,00</strong>
         </div>
-        <div>
-          <div className="d-flex gap-2 justify-content-end align-items-center">
-            <label className="fw-bold">Cupom</label>
-            <ScCupomInput type='text' />
-            <ScButton theme={primaryButton}>Aplicar</ScButton>
+        <div className="w-100 d-flex justify-content-end">
+          <div>
+            <div className="d-flex align-items-center gap-1">
+              <label className="fw-bold">Cupom</label>
+              <ScCupomInput type='text'/>
+              <ScButton theme={primaryButton}>Aplicar</ScButton>
+            </div>
+            <div>
+              <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={(props) => (
+                  <Tooltip id="button-tooltip" {...props}>
+                    Nome do desenvolvedor desse site.
+                  </Tooltip>
+                )}
+              >
+                <ScButton theme={secundaryButton} className="ps-0">Dica</ScButton>
+              </OverlayTrigger>
+            </div>
           </div>
-          <OverlayTrigger
-            placement="bottom"
-            delay={{ show: 250, hide: 400 }}
-            overlay={(props) => (
-              <Tooltip id="button-tooltip" {...props}>
-                Nome do desenvolvedor desse site.
-              </Tooltip>
-            )}
-          >
-            <ScButton theme={secundaryButton}>Dica</ScButton>
-          </OverlayTrigger>
         </div>
-        <div className="d-flex gap-2">
+        <div className="d-flex gap-2 fs-2">
           <p>Total:</p>
           <strong>R$1000</strong>
+        </div>
+        <div>
+          <ScButton theme={primaryButton} className="fs-2 px-3 py-2">Comprar</ScButton>
         </div>
       </div>
     </div>

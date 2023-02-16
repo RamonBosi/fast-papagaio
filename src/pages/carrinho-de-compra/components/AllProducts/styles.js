@@ -5,6 +5,7 @@ export const ScCupomInput = styled.input`
   height: 40px;
   padding: 4px;
   border: 1px solid rgba(83, 62, 133);
+  flex-grow: 2;
 
   &:focus-visible{
     outline: 1.5px solid rgba(83, 62, 133);
