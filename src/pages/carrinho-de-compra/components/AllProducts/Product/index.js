@@ -25,12 +25,8 @@ export function Product({ name, value, amount }) {
         </div>
       </div>
       <div className="d-flex gap-1">
-        <ThemeProvider
-          theme={secundaryButton}>
+        <ThemeProvider theme={secundaryButton}>
           <ScButton>Excluir</ScButton>
-        </ThemeProvider>
-        <ThemeProvider
-          theme={secundaryButton}>
           <ScButton>Comprar agora</ScButton>
         </ThemeProvider>
       </div>
