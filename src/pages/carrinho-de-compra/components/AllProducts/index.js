@@ -43,8 +43,7 @@ export function AllProducts() {
               <ScCupomInput type='text'/>
               <ScButton theme={primaryButton}>Aplicar</ScButton>
             </div>
-            <div>
-              <OverlayTrigger
+            <OverlayTrigger
                 placement="bottom"
                 delay={{ show: 250, hide: 400 }}
                 overlay={(props) => (
@@ -54,8 +53,7 @@ export function AllProducts() {
                 )}
               >
                 <ScButton theme={secundaryButton} className="ps-0">Dica</ScButton>
-              </OverlayTrigger>
-            </div>
+            </OverlayTrigger>
           </div>
         </div>
         <div className="d-flex gap-2 fs-2">
