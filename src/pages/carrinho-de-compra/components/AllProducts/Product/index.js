@@ -18,10 +18,14 @@ export function Product({ name, value, amount }) {
             {name}
           </ScTruncatedParagraph>
         </div>
-        <div className="d-flex justify-content-end align-items-center gap-2">
-          <QuantitySelector/>
-          <strong className="fs-5">R$ {value}</strong>
-          <p className="d-none">Estoque: {amount}</p>
+        <div className="d-flex justify-content-end">
+          <div>
+            <div className="d-flex justify-content-end align-items-center gap-2 mb-1">
+              <QuantitySelector/>
+              <strong className="fs-5">R$ {value}</strong>
+            </div>
+            <p>Estoque disponível: <strong>{amount}</strong></p>
+          </div>
         </div>
       </div>
       <div className="d-flex gap-1">
