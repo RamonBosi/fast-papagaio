@@ -1,12 +1,12 @@
-import { ScContainerCenter } from "@/styles/styledComponents/components/ContainerCenter";
+import Container from "react-bootstrap/Container";
 
 export function TagMain({ children }) {
 
   return (
     <main>
-      <ScContainerCenter className="d-flex flex-column mt-4">
+      <Container fluid='xl' className="p-2 d-flex flex-column">
         {children}
-      </ScContainerCenter>
+      </Container>
     </main>
   )
 }
