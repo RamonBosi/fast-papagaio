@@ -5,11 +5,16 @@ import { Concert_One } from '@next/font/google'
 
 const fontConcertOne = Concert_One({ subsets: ['latin'], weight: ['400'] })
 
-export const Brand = ({ size }) => {
+export const Brand = ({ size, keepFlexRow = true }) => {
+
+  const updateFlexRow = keepFlexRow ? '' : 'flex-column flex-sm-row'
 
   return (
     <div>
-      <Link passHref={true} href='/' className="d-flex flex-column flex-sm-row align-items-center gap-1">
+      <Link
+        passHref={true}
+        href='/'
+        className={`d-flex ${updateFlexRow} align-items-center gap-1`}>
         <Image
           className="align-self-center"
           src={brandImage}

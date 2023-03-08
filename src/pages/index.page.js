@@ -3,7 +3,7 @@ import { MyNavBar } from "@/components/MyNavBar";
 export default function Home() {
   return (
     <>
-      <MyNavBar/>
+      <MyNavBar showProductFilter={true}/>
     </>
   )
 }
