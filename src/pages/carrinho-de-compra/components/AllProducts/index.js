@@ -30,7 +30,7 @@ export function AllProducts() {
   }, [])
 
   return (
-    <div className="d-flex flex-column gap-2 p-2">
+    <div className="d-flex flex-column gap-2">
       {loadProducts || <></>}
       <div className="d-flex flex-column align-items-end gap-2 fs-5">
         <div className="d-flex gap-2 mb-2">
