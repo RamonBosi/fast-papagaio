@@ -7,14 +7,13 @@ import { Concert_One } from '@next/font/google'
 import Link from "next/link";
 import { useEffect } from "react";
 import ConfettiGenerator from "confetti-js";
-import brandoImage from '@/assets/img/brandImage/brandImage.png'
 
 const fontConcertOne = Concert_One({ subsets: ['latin'], weight: ['400'] })
 
 export default function Acknowledgment() {
 
   useEffect(() => {
-    const confettiSettings = {"target":"my-canvas","max":"80","size":"1","animate":true,"props":["square",{"type":"svg","src":brandoImage,"size":25,"weight":1}],"colors":[[165,104,246],[230,61,135],[0,199,228],[253,214,126]],"clock":"25","rotate":false,"width":"1366","height":"657","start_from_edge":true,"respawn":false}
+    const confettiSettings = {"target":"my-canvas","max":"80","size":"1","animate":true,"props":["square",{"type":"svg","src":"/brandImageSvgConfetti/brandImageSvgConfetti.svg","size":25,"weight":1}],"colors":[[165,104,246],[230,61,135],[0,199,228],[253,214,126]],"clock":"25","rotate":false,"width":"1366","height":"657","start_from_edge":true,"respawn":false}
     const confetti = new ConfettiGenerator(confettiSettings);
     confetti.render();
   
