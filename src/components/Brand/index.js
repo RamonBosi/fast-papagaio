@@ -23,7 +23,6 @@ export const Brand = ({
           href='/'
           className={`d-flex ${updateFlexRow} align-items-center gap-1`}>
           <Image
-            className="align-self-center"
             src={brandImage}
             width={size}
             height={size}
@@ -38,7 +37,6 @@ export const Brand = ({
   return (
     <div className={`d-flex ${updateFlexRow} align-items-center gap-1`}>
       <Image
-        className="align-self-center"
         src={brandImage}
         width={size}
         height={size}
