@@ -1,10 +1,10 @@
 import { Option } from "./Option";
-import brandImage from '@/assets/img/brandImage/brandImage.png'
 import pix from '@/assets/img/pix/pix.png'
 import Image from "next/image";
 import { ScButton } from "@/styles/styledComponents/components/Button";
 import { primaryButton } from "@/styles/styledComponents/components/Button/theme/primaryButton";
 import Link from "next/link";
+import { Brand } from "@/components/Brand";
 
 export function PaymentOptions() {
 
@@ -14,18 +14,15 @@ export function PaymentOptions() {
         <Option
           optionId={'saldoFastPapagaio'}
           optionText='Saldo do FastPapagaio'
-          icon={<Image
-            src={brandImage}
-            width={35}
-            height={35}
-            alt="Logo da empresa"
-            css={`
-            background-color: rgba(83, 62, 133);
-            padding: 4px;
-            border-radius: 20px;
-          `}
-          />}
-        />
+          icon={
+            <div css={`
+                padding: 4px;
+                background-color: rgba(83, 62, 133);
+                border-radius:20px;
+              `}>
+              <Brand size={25} withLink={false} showBrandName={false} />
+            </div>
+          }/>
         <Option
           optionId={'pix'}
           optionText='Pix'

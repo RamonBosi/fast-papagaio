@@ -6,6 +6,7 @@ import { Product } from "./components/Product";
 import { ScButton } from "@/styles/styledComponents/components/Button";
 import { primaryButton } from "@/styles/styledComponents/components/Button/theme/primaryButton";
 import { ScPurchaseSummary, ScPurchasedProducts } from './styles'
+import Link from "next/link";
 
 export default function Checkout() {
 
@@ -32,7 +33,7 @@ export default function Checkout() {
       <TagMain>
         <h1 className="align-self-center mb-3">Finalizar compra</h1>
         <div className="d-flex flex-column flex-sm-row justify-content-sm-between gap-2 p-sm-2">
-          <ScPurchaseSummary className="d-flex flex-column gap-1 order-sm-1">
+          <ScPurchaseSummary className="d-flex flex-column gap-1 order-sm-1 mb-2">
             <div className="d-flex justify-content-between">
               <p>Forma de pagamento</p>
               <strong>Pix</strong>
@@ -51,7 +52,9 @@ export default function Checkout() {
                 <label>Email principal</label>
                 <input type={'email'} />
               </div>
-              <ScButton className="mt-2 w-100" theme={primaryButton}>Comprar</ScButton>
+              <Link href='/agradecimento' passHref>
+                <ScButton className="mt-2 w-100" theme={primaryButton}>Comprar</ScButton>
+              </Link>
             </div>
           </ScPurchaseSummary>
           <ScPurchasedProducts>
