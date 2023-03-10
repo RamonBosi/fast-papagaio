@@ -5,15 +5,27 @@ import { ScButton } from "@/styles/styledComponents/components/Button";
 import { secundaryButton } from "@/styles/styledComponents/components/Button/theme/secundaryButton";
 import { Concert_One } from '@next/font/google'
 import Link from "next/link";
+import { useEffect } from "react";
+import ConfettiGenerator from "confetti-js";
+import brandoImage from '@/assets/img/brandImage/brandImage.png'
 
 const fontConcertOne = Concert_One({ subsets: ['latin'], weight: ['400'] })
 
 export default function Acknowledgment() {
 
+  useEffect(() => {
+    const confettiSettings = {"target":"my-canvas","max":"80","size":"1","animate":true,"props":["square",{"type":"svg","src":brandoImage,"size":25,"weight":1}],"colors":[[165,104,246],[230,61,135],[0,199,228],[253,214,126]],"clock":"25","rotate":false,"width":"1366","height":"657","start_from_edge":true,"respawn":false}
+    const confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+  
+    return () => confetti.clear();
+  }, [])
+
   return (
     <>
       <MyNavBar />
       <TagMain>
+        <canvas id="my-canvas" ></canvas>
         <div className="d-flex justify-content-center mt-3 mb-3">
           <div css={`
                 padding: 13px;
