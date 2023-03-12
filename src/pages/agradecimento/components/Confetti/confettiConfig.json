@@ -1,0 +1,43 @@
+{
+  "target": "confetti",
+  "max": "80",
+  "size": "2.5",
+  "animate": true,
+  "props": [
+    "square",
+    "circle",
+    {
+      "type": "svg",
+      "src": "/brandImageSvgConfetti/brandImageSvgConfetti.svg",
+      "weight": 1
+    }
+  ],
+  "colors": [
+    [
+      165,
+      104,
+      246
+    ],
+    [
+      230,
+      61,
+      135
+    ],
+    [
+      0,
+      199,
+      228
+    ],
+    [
+      253,
+      214,
+      126
+    ]
+  ],
+  "clock": "20",
+  "rotate": false,
+  "width": "1366",
+  "height": "657",
+  "start_from_edge": true,
+  "respawn": false
+}
