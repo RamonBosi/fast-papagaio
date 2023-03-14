@@ -20,4 +20,8 @@ export const GlobalStyles = createGlobalStyle`
   p{
     margin: 0 !important;
   }
+
+  next-route-announcer{
+    display: none;
+  }
 `
