@@ -7,6 +7,7 @@ import { ScButton } from "@/styles/styledComponents/components/Button";
 import { primaryButton } from "@/styles/styledComponents/components/Button/theme/primaryButton";
 import { ScPurchaseSummary, ScPurchasedProducts } from './styles'
 import Link from "next/link";
+import { MyFooter } from "@/components/MyFooter";
 
 export default function Checkout() {
 
@@ -62,6 +63,7 @@ export default function Checkout() {
           </ScPurchasedProducts>
         </div>
       </TagMain>
+      <MyFooter/>
     </>
   )
 }
