@@ -7,14 +7,23 @@ export const ScAllProductGrid = styled.div`
   justify-items: center;
 
   @media(min-width: 430px){
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2,1fr);
   }
 
   @media(min-width: 680px){
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3,1fr);
   }
 
-  @media(min-width: 900px){
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  @media(min-width: 768px){
+    grid-template-columns: repeat(2,1fr);
+    flex-grow: 1;
+  }
+
+  @media(min-width: 980px){
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  @media(min-width: 1250px){
+    grid-template-columns: repeat(4,1fr);
   }
 `
