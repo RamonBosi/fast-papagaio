@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import jsonProducts from '@/mocks/products.json'
 import { Product } from "./Product"
+import { ScAllProductGrid } from "./styles"
 
 export const AllProducts = () => {
 
@@ -18,8 +19,8 @@ export const AllProducts = () => {
   }, [])
 
   return(
-    <div className="d-flex flex-wrap gap-2 justify-content-between">
+    <ScAllProductGrid>
       {loadProducts}
-    </div>
+    </ScAllProductGrid>
   )
 }
