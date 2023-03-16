@@ -1,6 +1,7 @@
 import { MyFooter } from "@/components/MyFooter";
 import { MyNavBar } from "@/components/MyNavBar";
 import { TagMain } from "@/components/TagMain";
+import { ProductCard } from "./components/ProductCard";
 
 export default function ProductInformation() {
 
@@ -8,28 +9,30 @@ export default function ProductInformation() {
     <>
       <MyNavBar />
       <TagMain>
-        <p>Card do produto</p>
-        <p>Opção de comprar ou adicionar no carrinho</p>
-        <p>Comentarios do produto</p>
-        <p>Carrosel mostrando algumas opções de produtos</p>
+        <div>
+          <ProductCard />
+          <p>Descrição do produto</p>
+          <p>Comentarios do produto</p>
+          <p>Carrosel mostrando algumas opções de produtos</p>
+        </div>
       </TagMain>
       <MyFooter />
     </>
   )
 }
 
-export function getStaticPaths(){
+export function getStaticPaths() {
 
-  return{
-    paths:[],
+  return {
+    paths: [],
     fallback: true
   }
 }
 
-export function getStaticProps(ctx){
+export function getStaticProps(ctx) {
 
-  return{
-    props:{
+  return {
+    props: {
       params: ctx.params
     },
     revalidate: 5
