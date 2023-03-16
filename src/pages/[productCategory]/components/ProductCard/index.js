@@ -6,6 +6,7 @@ import { ScButton } from '@/styles/styledComponents/components/Button'
 import { primaryButton } from '@/styles/styledComponents/components/Button/theme/primaryButton'
 import { secundaryButton } from '@/styles/styledComponents/components/Button/theme/secundaryButton'
 import { ScProductCard } from './styles'
+import { QuantitySelector } from '@/components/QuantitySelector'
 
 export const ProductCard = () => {
 
@@ -17,6 +18,7 @@ export const ProductCard = () => {
       <div className='d-flex flex-column gap-2'>
         <h1 className='m-0 text-break'>{chosenProduct.current.nomeProduto}</h1>
         <strong className='fs-3'>R${chosenProduct.current.valor},00</strong>
+        <QuantitySelector/>
         <div className='d-flex gap-2 fs-4'>
           <ScButton theme={primaryButton}>Comprar</ScButton>
           <ScButton theme={secundaryButton}>Adicionar ao carrinho</ScButton>
