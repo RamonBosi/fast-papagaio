@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 
 import { ScButton } from "@/styles/styledComponents/components/Button";
 import { secundaryButton } from "@/styles/styledComponents/components/Button/theme/secundaryButton";
-import { QuantitySelector } from "./components/QuantitySelector";
+import { QuantitySelector } from "@/components/QuantitySelector";
 import { ScTruncatedParagraph } from "./styles";
 
 export function Product({ name, value, amount }) {
