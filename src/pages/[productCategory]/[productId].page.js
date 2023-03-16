@@ -3,6 +3,7 @@ import { MyNavBar } from "@/components/MyNavBar";
 import { TagMain } from "@/components/TagMain";
 import { ProductCard } from "./components/ProductCard";
 import { ProductDescription } from "./components/ProductDescription";
+import { ProductReviews } from "./components/ProductReviews";
 
 export default function ProductInformation() {
 
@@ -10,10 +11,10 @@ export default function ProductInformation() {
     <>
       <MyNavBar />
       <TagMain>
-        <div className="d-flex flex-column gap-2">
+        <div className="d-flex flex-column gap-2 p-2">
           <ProductCard />
           <ProductDescription/>
-          <p>Comentarios do produto</p>
+          <ProductReviews/>
           <p>Carrosel mostrando algumas opções de produtos</p>
         </div>
       </TagMain>
