@@ -2,6 +2,7 @@ import { MyFooter } from "@/components/MyFooter";
 import { MyNavBar } from "@/components/MyNavBar";
 import { TagMain } from "@/components/TagMain";
 import { ProductCard } from "./components/ProductCard";
+import { ProductDescription } from "./components/ProductDescription";
 
 export default function ProductInformation() {
 
@@ -9,9 +10,9 @@ export default function ProductInformation() {
     <>
       <MyNavBar />
       <TagMain>
-        <div>
+        <div className="d-flex flex-column gap-2">
           <ProductCard />
-          <p>Descrição do produto</p>
+          <ProductDescription/>
           <p>Comentarios do produto</p>
           <p>Carrosel mostrando algumas opções de produtos</p>
         </div>
