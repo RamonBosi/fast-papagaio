@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "create-products-json":"node ./src/json/products/index.js notebook && node ./src/json/products/index.js impressora && node ./src/json/products/index.js televisao"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -24,6 +25,7 @@
     "bootstrap": "^5.2.3",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
-    "react-bootstrap": "^2.7.0"
+    "react-bootstrap": "^2.7.0",
+    "uniqid": "^5.4.0"
   }
 }
