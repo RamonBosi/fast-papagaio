@@ -12,11 +12,14 @@ export default function ProductInformation() {
     <>
       <MyNavBar />
       <TagMain>
-        <div className="d-flex flex-column gap-3 p-2">
+        <div className="d-flex flex-column gap-4 p-2">
           <ProductCard />
           <ProductDescription/>
           <ProductReviews/>
-          <ProductCarousel/>
+          <div>
+            <h2>Ofertas do dia</h2>
+            <ProductCarousel/>
+          </div>
         </div>
       </TagMain>
       <MyFooter />
