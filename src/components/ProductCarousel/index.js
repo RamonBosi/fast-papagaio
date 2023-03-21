@@ -1,24 +1,21 @@
-import Carousel from 'react-bootstrap/Carousel';
 import { Product } from './components/Product';
+import { ScProductCarousel } from './styles';
 
 export const ProductCarousel = () => {
 
   return (
-    <div className='d-flex justify-content-center'>
-      <Carousel interval={null}>
-        <Carousel.Item>
-            <Product nomeProduto={'Notebook 1'} valor={2000}/>
-            <Product nomeProduto={'Notebook 1'} valor={2000}/>
-            <Product nomeProduto={'Notebook 1'} valor={2000}/>
-            <Product nomeProduto={'Notebook 1'} valor={2000}/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Product nomeProduto={'Notebook 2'} valor={2000}/>
-            <Product nomeProduto={'Notebook 2'} valor={2000}/>
-            <Product nomeProduto={'Notebook 2'} valor={2000}/>
-            <Product nomeProduto={'Notebook 2'} valor={2000}/>
-        </Carousel.Item>
-      </Carousel>
-    </div>
+    <ScProductCarousel className='d-flex gap-2 pb-2'>
+      <Product size={150} nomeProduto={'Notebook 1 cvxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+      <Product size={90} nomeProduto={'Notebook 1'} valor={2000}/>
+    </ScProductCarousel>
   )
 }
