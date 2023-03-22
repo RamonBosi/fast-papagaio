@@ -9,7 +9,6 @@ export const AllProducts = ({ products }) => {
 
   useEffect(() => {
 
-    console.log(products)
     if (products) {
 
       const createProductsCards = products.map((p) => {

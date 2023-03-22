@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const ScRatingStars = styled.div`
+  display: flex;
+  gap: 5px;
 
   i{
-    color: var(--elements-background-color);
+    color: ${props => props.theme === 'primary' ? 'var(--elements-background-color)' : 'var(--page-background-color)'};
   }
 `
