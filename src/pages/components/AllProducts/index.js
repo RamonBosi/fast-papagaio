@@ -1,27 +1,37 @@
-import { useEffect, useState } from "react"
-import jsonProducts from '@/mocks/products.json'
-import { Product } from "./Product"
 import { ScAllProductGrid } from "./styles"
 import { ValueFilter } from "../ValueFilter"
+import { useEffect, useState } from "react"
+import { Product } from "./Product"
 
-export const AllProducts = () => {
+export const AllProducts = ({ products }) => {
 
   const [loadProducts, setLoadProducts] = useState(null)
 
   useEffect(() => {
 
-    const products = jsonProducts.map((p) => {
+    console.log(products)
+    if (products) {
 
-      return <Product key={p.id} nomeProduto={p.nomeProduto} valor={p.valor} />
-    })
+      const createProductsCards = products.map((p) => {
 
-    setLoadProducts(products)
+        return <Product
+          key={p.id}
+          imageSrc={p.imageSrc}
+          productName={p.productName}
+          value={p.value}
+          description={p.description}
+          stars={p.stars}
+        />
+      })
 
-  }, [])
+      setLoadProducts(createProductsCards)
+    }
+
+  }, [products])
 
   return (
     <div className="d-flex flex-column flex-md-row gap-3">
-      <ValueFilter/>
+      <ValueFilter />
       <ScAllProductGrid>
         {loadProducts}
       </ScAllProductGrid>
