@@ -26,7 +26,7 @@ const createProduct = (index) => {
   return {
     id: uniqid(index),
     productCategory: category,
-    productName: `${formatProductName(category)} - Lorem ipsum dolor sit amet consectetur adipiscing elit, habitant finibus ultrices et aenean primis mus`,
+    productName: `${formatProductName(category)} ${index} - Lorem ipsum dolor sit amet consectetur adipiscing elit, habitant finibus ultrices et aenean primis mus`,
     imageSrc: imageSrc(),
     value: Math.floor(Math.random() * (8000 - 1000 + 1)) + 1000,
     amount: Math.floor(Math.random() * (50 - 10 + 1)) + 10,
