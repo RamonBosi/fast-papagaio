@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react"
 import { Product } from "./Product"
 import { productsApi } from "@/services/products";
 import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
+import { RequestErrorWarning } from "@/components/RequestErrorWarning";
+import { Loading } from "@/components/Loading";
 
 export const AllProducts = () => {
 
@@ -11,7 +13,7 @@ export const AllProducts = () => {
   const [loadProducts, setLoadProducts] = useState(null)
 
   useEffect(() => {
-    
+
     productsApi.get(productCategory)
       .then((res) => {
         const createProductsCards = res.data.map((p) => {
@@ -26,18 +28,45 @@ export const AllProducts = () => {
           />
         })
 
-        setLoadProducts(createProductsCards)
+        setLoadProducts({
+          success: true,
+          products: createProductsCards
+        }
+        )
       })
-      .catch((err) => console.log(err))
+      .catch(() => { setLoadProducts({ success: false }) })
 
   }, [productCategory])
 
-  return (
-    <div className="d-flex flex-column flex-md-row gap-3">
-      <ValueFilter />
-      <ScAllProductGrid>
-        {loadProducts}
-      </ScAllProductGrid>
-    </div>
-  )
+  const HandlerLoadProducts = () => {
+
+    if (loadProducts) {
+
+      if (loadProducts.success) {
+        return (
+          <div className="d-flex flex-column flex-md-row gap-3">
+            <ValueFilter />
+            <ScAllProductGrid>
+              {loadProducts.products}
+            </ScAllProductGrid>
+          </div>
+        )
+      } else {
+
+        return (
+          <div>
+            <RequestErrorWarning error={'Não foi possível buscar os produtos, tente novamente mais tarde'} />
+          </div>
+        )
+      }
+    }
+
+    return (
+      <div className="d-flex justify-content-center">
+        <Loading role={'Carregando os produtos de acordo com a categoria selecionada'} />
+      </div>
+    )
+  }
+
+  return HandlerLoadProducts()
 }
