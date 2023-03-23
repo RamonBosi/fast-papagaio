@@ -3,21 +3,18 @@ import { MyNavBar } from "@/components/MyNavBar";
 import { ProductCarousel } from "@/components/ProductCarousel";
 import { TagMain } from "@/components/TagMain";
 import { productsApi } from "@/services/products";
-import { useEffect } from "react";
 import { ProductCard } from "./components/ProductCard";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductReviews } from "./components/ProductReviews";
 
 export default function ProductInformation({ productsInfo }) {
 
-  useEffect(() => { console.log(productsInfo) }, [])
-
   return (
     <>
       <MyNavBar />
       <TagMain>
         <div className="d-flex flex-column gap-4 p-2">
-          <ProductCard />
+          <ProductCard productsInfo={productsInfo}/>
           <ProductDescription />
           <ProductReviews />
           <div>
