@@ -1,32 +1,36 @@
 import { ScAllProductGrid } from "./styles"
 import { ValueFilter } from "../ValueFilter"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Product } from "./Product"
+import { productsApi } from "@/services/products";
+import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
 
-export const AllProducts = ({ products }) => {
+export const AllProducts = () => {
 
+  const { productCategory } = useContext(ContextFilterProductsByCategory)
   const [loadProducts, setLoadProducts] = useState(null)
 
   useEffect(() => {
+    
+    productsApi.get(productCategory)
+      .then((res) => {
+        const createProductsCards = res.data.map((p) => {
 
-    if (products) {
+          return <Product
+            key={p.id}
+            imageSrc={p.imageSrc}
+            productName={p.productName}
+            value={p.value}
+            description={p.description}
+            stars={p.stars}
+          />
+        })
 
-      const createProductsCards = products.map((p) => {
-
-        return <Product
-          key={p.id}
-          imageSrc={p.imageSrc}
-          productName={p.productName}
-          value={p.value}
-          description={p.description}
-          stars={p.stars}
-        />
+        setLoadProducts(createProductsCards)
       })
+      .catch((err) => console.log(err))
 
-      setLoadProducts(createProductsCards)
-    }
-
-  }, [products])
+  }, [productCategory])
 
   return (
     <div className="d-flex flex-column flex-md-row gap-3">
