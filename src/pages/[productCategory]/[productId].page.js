@@ -2,11 +2,15 @@ import { MyFooter } from "@/components/MyFooter";
 import { MyNavBar } from "@/components/MyNavBar";
 import { ProductCarousel } from "@/components/ProductCarousel";
 import { TagMain } from "@/components/TagMain";
+import { productsApi } from "@/services/products";
+import { useEffect } from "react";
 import { ProductCard } from "./components/ProductCard";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductReviews } from "./components/ProductReviews";
 
-export default function ProductInformation() {
+export default function ProductInformation({ productsInfo }) {
+
+  useEffect(() => { console.log(productsInfo) }, [])
 
   return (
     <>
@@ -14,11 +18,11 @@ export default function ProductInformation() {
       <TagMain>
         <div className="d-flex flex-column gap-4 p-2">
           <ProductCard />
-          <ProductDescription/>
-          <ProductReviews/>
+          <ProductDescription />
+          <ProductReviews />
           <div>
             <h2>Ofertas do dia</h2>
-            <ProductCarousel/>
+            <ProductCarousel />
           </div>
         </div>
       </TagMain>
@@ -35,11 +39,17 @@ export function getStaticPaths() {
   }
 }
 
-export function getStaticProps(ctx) {
+export async function getStaticProps(ctx) {
+
+  const { productCategory, productId } = ctx.params
+
+  const res = await productsApi.get(`${productCategory}/id/${productId}`)
+    .then((res) => res.data)
+    .catch((err) => console.log(err))
 
   return {
     props: {
-      params: ctx.params
+      productsInfo: res
     },
     revalidate: 5
   }

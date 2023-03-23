@@ -14,12 +14,14 @@ export const AllProducts = () => {
 
   useEffect(() => {
 
-    productsApi.get(productCategory)
+    productsApi.get(`/${productCategory}`)
       .then((res) => {
         const createProductsCards = res.data.map((p) => {
 
           return <Product
             key={p.id}
+            id={p.id}
+            productCategory={p.productCategory}
             imageSrc={p.imageSrc}
             productName={p.productName}
             value={p.value}
