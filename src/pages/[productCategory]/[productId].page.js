@@ -1,13 +1,22 @@
+import { Loading } from "@/components/Loading";
 import { MyFooter } from "@/components/MyFooter";
 import { MyNavBar } from "@/components/MyNavBar";
 import { ProductCarousel } from "@/components/ProductCarousel";
 import { TagMain } from "@/components/TagMain";
 import { productsApi } from "@/services/products";
+import { useRouter } from "next/router";
 import { ProductCard } from "./components/ProductCard";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductReviews } from "./components/ProductReviews";
 
 export default function ProductInformation({ productsInfo }) {
+
+  const router = useRouter()
+
+  if(router.isFallback){
+
+    return <Loading role={'Carregando o produto selecionado'}/>
+  }
 
   return (
     <>
