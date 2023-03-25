@@ -1,7 +1,7 @@
 import { Loading } from "@/components/Loading";
 import { MyFooter } from "@/components/MyFooter";
 import { MyNavBar } from "@/components/MyNavBar";
-import { ProductCarousel } from "@/components/ProductCarousel";
+import { ProductsCarousel } from "@/components/ProductsCarousel";
 import { TagMain } from "@/components/TagMain";
 import { productsApi } from "@/services/products";
 import { useRouter } from "next/router";
@@ -28,7 +28,7 @@ export default function ProductInformation({ productsInfo }) {
           <ProductReviews />
           <div>
             <h2>Ofertas do dia</h2>
-            <ProductCarousel />
+            <ProductsCarousel />
           </div>
         </div>
       </TagMain>
