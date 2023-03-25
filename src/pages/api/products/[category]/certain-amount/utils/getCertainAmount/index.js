@@ -1,4 +1,4 @@
-export function getCertainAmount(category,amount){
+export function getCertainAmount(products,amount){
 
-  return category.splice(0,amount)
+  return products.splice(0,amount)
 }

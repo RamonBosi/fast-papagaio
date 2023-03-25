@@ -1,17 +1,11 @@
-import notebookJson from '@/json/products/build/notebook.json'
-import impressoraJson from '@/json/products/build/impressora.json'
-import televisaoJson from '@/json/products/build/televisao.json'
+import { getByCategory } from '../utils/getByCategory'
 import { getCertainAmount } from './utils/getCertainAmount'
 
-export default function certainAmount(req, res) {
+export default function certainAmountProductsPerCategory(req, res) {
 
-  const { category,amount } = req.query
+  const { category, amount } = req.query
 
-  if(category === 'notebook'){
-    return res.status(200).json(getCertainAmount(notebookJson,amount))
-  }else if(category === 'impressora'){
-    return res.status(200).json(getCertainAmount(impressoraJson,amount))
-  }
+  const products = getByCategory(category)
 
-  return res.status(200).json(getCertainAmount(televisaoJson,amount))
+  return res.status(200).json(getCertainAmount(products, amount))
 }
