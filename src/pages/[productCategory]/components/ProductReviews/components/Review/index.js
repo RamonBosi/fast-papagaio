@@ -6,7 +6,7 @@ export const Review = ({ user,stars, comment }) => {
   return (
     <ScReview className="d-flex flex-column gap-2 pb-2">
       <strong className="fs-4">{user}</strong>
-      <RatingStars stars={stars} />
+      <RatingStars stars={stars} theme={'primary'}/>
       <p className="text-break">{comment}</p>
     </ScReview>
   )
