@@ -50,13 +50,15 @@ export async function getStaticProps(ctx) {
   const { productCategory, productId } = ctx.params
 
   const res = await productsApi.get(`${productCategory}/id/${productId}`)
-    .then((res) => res.data)
-    .catch((err) => console.log(err))
+    .then((res) => ({
+      props: {
+        productsInfo: res.data
+      },
+      revalidate: 5
+    }))
+    .catch(() => ({
+      notFound: true
+    }))
 
-  return {
-    props: {
-      productsInfo: res
-    },
-    revalidate: 5
-  }
+  return res
 }
