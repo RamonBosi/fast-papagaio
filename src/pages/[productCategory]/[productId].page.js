@@ -22,7 +22,7 @@ export default function ProductInformation({ productsInfo }) {
     <>
       <MyNavBar />
       <TagMain>
-        <div className="d-flex flex-column gap-4 p-2">
+        <div className="d-flex flex-column gap-4">
           <ProductCard productsInfo={productsInfo}/>
           <ProductDescription />
           <ProductReviews />

@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
-export const ScProductCard = styled.div`
+export const ScImageContainer = styled.div`
+  width: 100%;
+  height:300px;
 
-  img{
-    max-width:400px;
-  }
+ @media(min-width: 576px){
+  width: 300px;
+  height:100%;
+ }
 `
