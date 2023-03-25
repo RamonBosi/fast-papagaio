@@ -4,6 +4,7 @@ import { primaryButton } from '@/styles/styledComponents/components/Button/theme
 import { secundaryButton } from '@/styles/styledComponents/components/Button/theme/secundaryButton'
 import { ScImageContainer } from './styles'
 import { QuantitySelector } from '@/components/QuantitySelector'
+import { RatingStars } from '@/components/RatingStars'
 
 export const ProductCard = ({ productsInfo }) => {
 
@@ -16,6 +17,7 @@ export const ProductCard = ({ productsInfo }) => {
       </div>
       <div className='d-flex flex-column gap-2'>
         <h1 className='m-0 text-break'>{productsInfo.productName}</h1>
+        <RatingStars stars={productsInfo.stars} theme={'primary'}/>
         <strong className='fs-3'>R${productsInfo.value},00</strong>
         <QuantitySelector />
         <div className='d-flex gap-2 fs-4'>
