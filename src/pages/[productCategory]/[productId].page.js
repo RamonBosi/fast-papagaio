@@ -15,7 +15,7 @@ export default function ProductInformation({ productsInfo }) {
 
   if(router.isFallback){
 
-    return <Loading role={'Carregando o produto selecionado'}/>
+    return <Loading role={'Carregando o produto selecionado'} occupyViewport={true}/>
   }
 
   return (
