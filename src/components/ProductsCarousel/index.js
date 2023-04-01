@@ -13,20 +13,30 @@ export const ProductsCarousel = () => {
   const [loadProducts, setLoadProducts] = useState(null)
 
   useEffect(() => {
-    productsApi.get(`${router.query.productCategory}/certain-amount/10`)
-      .then((res) => {
-        console.log(res.data)
 
-        const createProducts = res.data.map((p) => {
+    const abortController = new AbortController()
+    const fetchData = async () => {
+      const category = router.query.productCategory
+      const res = await fetch(`http://localhost:3000/api/products/${category}/certain-amount/10`,{signal: abortController.signal})
 
-          return <Product key={p.id} size={100} productsInfo={p} />
-        })
+      const resJson = await res.json()
 
+      console.log(res)
+
+      const createProducts = resJson.map((p) => {
+
+        return <Product key={p.id} size={100} productsInfo={p} />
+      })
+
+      
         setLoadProducts(createProducts)
-      })
-      .catch(() => {
-        setLoadProducts(<RequestErrorWarning error={'Não foi possível carregar os produtos da orfetas do dia'} />)
-      })
+    }
+
+    fetchData()
+
+    return () => {
+      abortController.abort()
+    }
   }, [])
 
   return (

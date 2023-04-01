@@ -11,6 +11,8 @@ import { ProductReviews } from "./components/ProductReviews";
 
 export default function ProductInformation({ productsInfo }) {
 
+  // console.log(typeof productsInfo)
+
   const router = useRouter()
 
   if(router.isFallback){
@@ -49,16 +51,24 @@ export async function getStaticProps(ctx) {
 
   const { productCategory, productId } = ctx.params
 
-  const res = await productsApi.get(`${productCategory}/id/${productId}`)
-    .then((res) => ({
-      props: {
-        productsInfo: res.data
-      },
-      revalidate: 5
-    }))
-    .catch(() => ({
-      notFound: true
-    }))
+  let json = null
 
-  return res
+  try {
+    const res = await fetch(`http://localhost:3000/api/products/${productCategory}/id/${productId}`)
+    const resJson = await res.json()
+
+    json = {
+      props:{
+        productsInfo: resJson
+      }
+    }
+  } catch (error) {
+    console.log(error)
+
+    json = {
+      notFound:true
+    }
+  }
+  
+  return json
 }
