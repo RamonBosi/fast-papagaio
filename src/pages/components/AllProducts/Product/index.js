@@ -3,24 +3,24 @@ import Image from "next/image"
 import Link from "next/link"
 import { ScProduct } from "./styles"
 
-export const Product = ({ productName, value, imageSrc, stars, description, productCategory, id }) => {
+export const Product = ({ productInfo }) => {
 
   return (
-    <Link passHref href={`/${productCategory}/${id}`}>
+    <Link passHref href={`/${productInfo.productCategory}/${productInfo.id}`}>
       <ScProduct className="p-2 rounded">
         <div className="d-flex flex-column gap-1">
           <Image
             priority
             width={184}
             height={180}
-            src={imageSrc}
-            alt={description}
+            src={productInfo.imageSrc}
+            alt={productInfo.description}
           />
-          <RatingStars stars={stars} theme={'secundary'} />
+          <RatingStars stars={productInfo.stars} theme={'secundary'} />
         </div>
         <div className="d-flex flex-column gap-2 mt-2">
-          <p className="text-truncate">{productName}</p>
-          <p>R${value},00</p>
+          <p className="text-truncate">{productInfo.productName}</p>
+          <p>R${productInfo.value},00</p>
         </div>
       </ScProduct>
     </Link>

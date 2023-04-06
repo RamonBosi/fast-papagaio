@@ -2,10 +2,10 @@ import { ScAllProductGrid } from "./styles"
 import { ValueFilter } from "../ValueFilter"
 import { useContext, useEffect, useState } from "react"
 import { Product } from "./Product"
-import { productsApi } from "@/services/products";
 import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
 import { RequestErrorWarning } from "@/components/RequestErrorWarning";
 import { Loading } from "@/components/Loading";
+import { getByCategory } from "@/services/products/getByCategory";
 
 export const AllProducts = () => {
 
@@ -14,61 +14,32 @@ export const AllProducts = () => {
 
   useEffect(() => {
 
-    productsApi.get(`/${productCategory}`)
-      .then((res) => {
-        const createProductsCards = res.data.map((p) => {
+    const products = getByCategory(productCategory)
 
-          return <Product
-            key={p.id}
-            id={p.id}
-            productCategory={p.productCategory}
-            imageSrc={p.imageSrc}
-            productName={p.productName}
-            value={p.value}
-            description={p.description}
-            stars={p.stars}
-          />
-        })
+    const createProductsCards = products.map((p) => {
 
-        setLoadProducts({
-          success: true,
-          products: createProductsCards
-        }
-        )
-      })
-      .catch(() => { setLoadProducts({ success: false }) })
+      return <Product key={p.id} productInfo={p} />
+    })
+
+    setLoadProducts(createProductsCards)
 
   }, [productCategory])
 
-  const HandlerLoadProducts = () => {
-
-    if (loadProducts) {
-
-      if (loadProducts.success) {
-        return (
-          <div className="d-flex flex-column flex-md-row gap-3">
-            <ValueFilter />
-            <ScAllProductGrid>
-              {loadProducts.products}
-            </ScAllProductGrid>
-          </div>
-        )
-      } else {
-
-        return (
-          <div>
-            <RequestErrorWarning error={'Não foi possível buscar os produtos, tente novamente mais tarde'} />
-          </div>
-        )
-      }
-    }
+  if (loadProducts) {
 
     return (
-      <div className="d-flex justify-content-center">
-        <Loading role={'Carregando os produtos de acordo com a categoria selecionada'} />
+      <div className="d-flex flex-column flex-md-row gap-3">
+        <ValueFilter />
+        <ScAllProductGrid>
+          {loadProducts}
+        </ScAllProductGrid>
       </div>
     )
   }
 
-  return HandlerLoadProducts()
+  return (
+    <div className="d-flex justify-content-center">
+      <Loading role={'Carregando os produtos de acordo com a categoria selecionada'} />
+    </div>
+  )
 }
