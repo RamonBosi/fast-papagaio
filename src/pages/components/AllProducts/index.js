@@ -3,7 +3,6 @@ import { ValueFilter } from "../ValueFilter"
 import { useContext, useEffect, useState } from "react"
 import { Product } from "./Product"
 import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
-import { RequestErrorWarning } from "@/components/RequestErrorWarning";
 import { Loading } from "@/components/Loading";
 import { getByCategory } from "@/services/products/getByCategory";
 

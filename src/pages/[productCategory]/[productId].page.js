@@ -3,15 +3,13 @@ import { MyFooter } from "@/components/MyFooter";
 import { MyNavBar } from "@/components/MyNavBar";
 import { ProductsCarousel } from "@/components/ProductsCarousel";
 import { TagMain } from "@/components/TagMain";
-import { productsApi } from "@/services/products";
 import { useRouter } from "next/router";
 import { ProductCard } from "./components/ProductCard";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductReviews } from "./components/ProductReviews";
+import { getByCategoryAndId } from "@/services/products/getByCategoryAndId";
 
 export default function ProductInformation({ productsInfo }) {
-
-  // console.log(typeof productsInfo)
 
   const router = useRouter()
 
@@ -51,24 +49,11 @@ export async function getStaticProps(ctx) {
 
   const { productCategory, productId } = ctx.params
 
-  let json = null
+  const product = getByCategoryAndId(productCategory,productId)
 
-  try {
-    const res = await fetch(`http://localhost:3000/api/products/${productCategory}/id/${productId}`)
-    const resJson = await res.json()
-
-    json = {
-      props:{
-        productsInfo: resJson
-      }
-    }
-  } catch (error) {
-    console.log(error)
-
-    json = {
-      notFound:true
+  return {
+    props:{
+      productsInfo: product
     }
   }
-  
-  return json
 }
