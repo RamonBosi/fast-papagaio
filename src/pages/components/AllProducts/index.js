@@ -13,15 +13,25 @@ export const AllProducts = () => {
 
   useEffect(() => {
 
+    let ignore = false
+
     const products = getByCategory(productCategory)
 
+    console.log(products)
+    
     const createProductsCards = products.map((p) => {
 
       return <Product key={p.id} productInfo={p} />
     })
 
-    setLoadProducts(createProductsCards)
+    if(!ignore){
 
+      setLoadProducts(createProductsCards)
+    }
+
+    return () =>{
+      ignore = true
+    }
   }, [productCategory])
 
   if (loadProducts) {
