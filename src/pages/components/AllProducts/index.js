@@ -5,33 +5,34 @@ import { Product } from "./Product"
 import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
 import { Loading } from "@/components/Loading";
 import { getByCategory } from "@/services/products/getByCategory";
+import { useRouter } from "next/router";
 
 export const AllProducts = () => {
 
   const { productCategory } = useContext(ContextFilterProductsByCategory)
   const [loadProducts, setLoadProducts] = useState(null)
 
-  useEffect(() => {
+  const router = useRouter()
 
-    let ignore = false
+  useEffect(() => {
 
     const products = getByCategory(productCategory)
 
     console.log(products)
     
+    if(products.length){
     const createProductsCards = products.map((p) => {
 
       return <Product key={p.id} productInfo={p} />
     })
 
-    if(!ignore){
 
       setLoadProducts(createProductsCards)
+    }else{
+      console.log('pagina atualizada')
+      router.replace(router.asPath)
     }
 
-    return () =>{
-      ignore = true
-    }
   }, [productCategory])
 
   if (loadProducts) {

@@ -18,14 +18,14 @@ export const ProductsCarousel = () => {
 
     const products = getCertainAmountByCategory(category, 10)
 
-    // console.log(products)
+    console.log(typeof products)
     
     const createProducts = products.map((p) => {
 
       return <Product key={p.id} size={100} productsInfo={p} />
     })
 
-    if (!ignore) {
+    if (products.length === 10) {
 
       setLoadProducts(createProducts)
     }
