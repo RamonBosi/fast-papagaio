@@ -1,11 +1,10 @@
-import { getByCategory } from '../utils/getByCategory'
 import { getCertainAmount } from './utils/getCertainAmount'
 
-export default function certainAmountProductsPerCategory(req, res) {
+export default async function certainAmountProductsPerCategory(req, res) {
 
   const { category, amount } = req.query
 
-  const products = getByCategory(category)
+  const products = await getCertainAmount(category, amount)
 
-  return res.status(200).json(getCertainAmount(products, amount))
+  return res.status(200).json(products)
 }

@@ -4,6 +4,7 @@ import { Product } from './components/Product';
 import { ScProductCarousel } from './styles';
 import { Loading } from '@/components/Loading';
 import { getCertainAmountByCategory } from '@/services/products/getCertainAmountByCategory';
+import axios from 'axios';
 
 export const ProductsCarousel = () => {
 
@@ -12,26 +13,24 @@ export const ProductsCarousel = () => {
   const [loadProducts, setLoadProducts] = useState(null)
 
   useEffect(() => {
-    let ignore = false
 
-    const category = router.query.productCategory
+    const params = router.query
 
-    const products = getCertainAmountByCategory(category, 10)
+    const abortController = new AbortController()
 
-    console.log(typeof products)
-    
-    const createProducts = products.map((p) => {
+    axios.get(`/api/products/${params.productCategory}/certain-amount/10`,{signal: abortController.signal})
+    .then((res) =>{
+      const createProducts = res.data.map((p) => {
 
-      return <Product key={p.id} size={100} productsInfo={p} />
-    })
-
-    if (products.length === 10) {
-
+        return <Product key={p.id} size={100} productsInfo={p} />
+      })
+  
       setLoadProducts(createProducts)
-    }
-
-    return () => {
-      ignore = true
+    })
+    .catch((err) => console.log(err))
+    
+    return () =>{
+      abortController.abort()
     }
   }, [])
 

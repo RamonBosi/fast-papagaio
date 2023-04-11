@@ -8,14 +8,15 @@ import { ProductDescription } from "./components/ProductDescription";
 import { ProductReviews } from "./components/ProductReviews";
 import { getByCategoryAndId } from "@/services/products/getByCategoryAndId";
 import { ProductsCarousel } from "./components/ProductsCarousel";
+import axios from "axios";
 
 export default function ProductInformation({ productsInfo }) {
 
   const router = useRouter()
 
-  if(router.isFallback){
+  if (router.isFallback) {
 
-    return <Loading role={'Carregando o produto selecionado'} occupyViewport={true}/>
+    return <Loading role={'Carregando o produto selecionado'} occupyViewport={true} />
   }
 
   return (
@@ -23,7 +24,7 @@ export default function ProductInformation({ productsInfo }) {
       <MyNavBar />
       <TagMain>
         <div className="d-flex flex-column gap-4">
-          <ProductCard productsInfo={productsInfo}/>
+          <ProductCard productsInfo={productsInfo} />
           <ProductDescription />
           <ProductReviews />
           <div>
@@ -49,11 +50,20 @@ export async function getStaticProps(ctx) {
 
   const { productCategory, productId } = ctx.params
 
-  const product = getByCategoryAndId(productCategory,productId)
-
-  return {
-    props:{
-      productsInfo: product
+  let res = {
+    props: {
+      productsInfo: null
     }
   }
+
+  const data = await axios.get(`http://localhost:3000/api/products/${productCategory}/id/${productId}`)
+  res = {
+    props: {
+      productsInfo: data.data
+    }
+  }
+
+  // console.log(data)
+
+  return res
 }

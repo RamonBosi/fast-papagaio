@@ -6,6 +6,7 @@ import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsBy
 import { Loading } from "@/components/Loading";
 import { getByCategory } from "@/services/products/getByCategory";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export const AllProducts = () => {
 
@@ -16,22 +17,19 @@ export const AllProducts = () => {
 
   useEffect(() => {
 
-    const products = getByCategory(productCategory)
+    axios.get(`/api/products/${productCategory}`)
+    .then((res) => {
 
-    console.log(products)
-    
-    if(products.length){
-    const createProductsCards = products.map((p) => {
-
-      return <Product key={p.id} productInfo={p} />
+      const createProductsCards = res.data.map((p) => {
+  
+        return <Product key={p.id} productInfo={p} />
+      })
+  
+  
+        setLoadProducts(createProductsCards)
     })
-
-
-      setLoadProducts(createProductsCards)
-    }else{
-      console.log('pagina atualizada')
-      router.replace(router.asPath)
-    }
+    .catch((err) => console.log(err))
+    
 
   }, [productCategory])
 
