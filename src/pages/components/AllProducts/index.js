@@ -17,7 +17,7 @@ export const AllProducts = () => {
 
   useEffect(() => {
 
-    axios.get(`/api/products/${productCategory}`)
+    axios.get(`http://localhost:3000/api/products/${productCategory}`)
     .then((res) => {
 
       const createProductsCards = res.data.map((p) => {

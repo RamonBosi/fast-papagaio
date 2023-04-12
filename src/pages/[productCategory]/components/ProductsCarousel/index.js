@@ -16,9 +16,8 @@ export const ProductsCarousel = () => {
 
     const params = router.query
 
-    const abortController = new AbortController()
 
-    axios.get(`/api/products/${params.productCategory}/certain-amount/10`,{signal: abortController.signal})
+    axios.get(`http://localhost:3000/api/products/${params.productCategory}/certain-amount/10`)
     .then((res) =>{
       const createProducts = res.data.map((p) => {
 
@@ -29,9 +28,7 @@ export const ProductsCarousel = () => {
     })
     .catch((err) => console.log(err))
     
-    return () =>{
-      abortController.abort()
-    }
+    
   }, [])
 
   return (
