@@ -4,32 +4,25 @@ import { useContext, useEffect, useState } from "react"
 import { Product } from "./Product"
 import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
 import { Loading } from "@/components/Loading";
-import { getByCategory } from "@/services/products/getByCategory";
-import { useRouter } from "next/router";
-import axios from "axios";
+import { productsApi } from "@/services/productsApi";
 
 export const AllProducts = () => {
 
   const { productCategory } = useContext(ContextFilterProductsByCategory)
   const [loadProducts, setLoadProducts] = useState(null)
 
-  const router = useRouter()
-
   useEffect(() => {
 
-    axios.get(`http://localhost:3000/api/products/${productCategory}`)
-    .then((res) => {
+    productsApi.get(productCategory)
+      .then((res) => {
 
-      const createProductsCards = res.data.map((p) => {
-  
-        return <Product key={p.id} productInfo={p} />
-      })
-  
-  
+        const createProductsCards = res.data.map((p) => {
+
+          return <Product key={p.id} productInfo={p} />
+        })
+
         setLoadProducts(createProductsCards)
-    })
-    .catch((err) => console.log(err))
-    
+      })
 
   }, [productCategory])
 

@@ -1,8 +1,8 @@
-import axios from "axios";
+import { productsJson } from "@/services/productsJson"
 
 export async function getByCategory(category){
 
-  const res = await axios.get(`http://localhost:3000/build/${category}.json`)
+  const res = await productsJson.get(`${category}.json`)
 
   return res.data
 }

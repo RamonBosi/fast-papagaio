@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react';
 import { Product } from './components/Product';
 import { ScProductCarousel } from './styles';
 import { Loading } from '@/components/Loading';
-import { getCertainAmountByCategory } from '@/services/products/getCertainAmountByCategory';
-import axios from 'axios';
+import { productsApi } from '@/services/productsApi';
 
 export const ProductsCarousel = () => {
 
@@ -16,19 +15,16 @@ export const ProductsCarousel = () => {
 
     const params = router.query
 
+    productsApi.get(`${params.productCategory}/certain-amount/10`)
+      .then((res) => {
+        const createProducts = res.data.map((p) => {
 
-    axios.get(`http://localhost:3000/api/products/${params.productCategory}/certain-amount/10`)
-    .then((res) =>{
-      const createProducts = res.data.map((p) => {
+          return <Product key={p.id} size={100} productsInfo={p} />
+        })
 
-        return <Product key={p.id} size={100} productsInfo={p} />
+        setLoadProducts(createProducts)
       })
-  
-      setLoadProducts(createProducts)
-    })
-    .catch((err) => console.log(err))
-    
-    
+
   }, [])
 
   return (

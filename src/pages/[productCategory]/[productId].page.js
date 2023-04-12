@@ -6,9 +6,8 @@ import { useRouter } from "next/router";
 import { ProductCard } from "./components/ProductCard";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductReviews } from "./components/ProductReviews";
-import { getByCategoryAndId } from "@/services/products/getByCategoryAndId";
 import { ProductsCarousel } from "./components/ProductsCarousel";
-import axios from "axios";
+import { productsApi } from "@/services/productsApi";
 
 export default function ProductInformation({ productsInfo }) {
 
@@ -50,20 +49,11 @@ export async function getStaticProps(ctx) {
 
   const { productCategory, productId } = ctx.params
 
-  let res = {
-    props: {
-      productsInfo: null
-    }
-  }
+  const data = await productsApi.get(`${productCategory}/id/${productId}`)
 
-  const data = await axios.get(`http://localhost:3000/api/products/${productCategory}/id/${productId}`)
-  res = {
+  return {
     props: {
       productsInfo: data.data
     }
   }
-
-  // console.log(data)
-
-  return res
 }
