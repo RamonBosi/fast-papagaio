@@ -15,7 +15,12 @@ export const ProductsCarousel = () => {
 
     const params = router.query
 
-    productsApi.get(`${params.productCategory}/certain-amount/10`)
+    const abortController = new AbortController()
+
+    productsApi.get(
+      `${params.productCategory}/certain-amount/10`,
+      { signal: abortController.signal }
+    )
       .then((res) => {
         const createProducts = res.data.map((p) => {
 
@@ -24,7 +29,11 @@ export const ProductsCarousel = () => {
 
         setLoadProducts(createProducts)
       })
+      .catch(() => null)
 
+    return () => {
+      abortController.abort()
+    }
   }, [])
 
   return (

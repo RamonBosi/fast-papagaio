@@ -13,7 +13,9 @@ export const AllProducts = () => {
 
   useEffect(() => {
 
-    productsApi.get(productCategory)
+    const abortController = new AbortController()
+
+    productsApi.get(productCategory, { signal: abortController.signal })
       .then((res) => {
 
         const createProductsCards = res.data.map((p) => {
@@ -23,7 +25,11 @@ export const AllProducts = () => {
 
         setLoadProducts(createProductsCards)
       })
+      .catch(() => null)
 
+    return () => {
+      abortController.abort()
+    }
   }, [productCategory])
 
   if (loadProducts) {
