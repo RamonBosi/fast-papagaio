@@ -5,6 +5,7 @@ import { Product } from "./Product"
 import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
 import { Loading } from "@/components/Loading";
 import { productsApi } from "@/services/productsApi";
+import { RequestErrorWarning } from "@/components/RequestErrorWarning";
 
 export const AllProducts = () => {
 
@@ -15,17 +16,24 @@ export const AllProducts = () => {
 
     const abortController = new AbortController()
 
-    productsApi.get(productCategory, { signal: abortController.signal })
+    productsApi.get('productCategory', { signal: abortController.signal })
       .then((res) => {
 
-        const createProductsCards = res.data.map((p) => {
+        const data = res.data
 
-          return <Product key={p.id} productInfo={p} />
-        })
+        if(data){
 
-        setLoadProducts(createProductsCards)
+          const createProductsCards = data.map((p) => {
+  
+            return <Product key={p.id} productInfo={p} />
+          })
+  
+          setLoadProducts(createProductsCards)
+        }
       })
-      .catch(() => null)
+      .catch(() =>{
+        setLoadProducts(<RequestErrorWarning error={'Não foi possível encontrar os produtos da categoria escolhida'}/>)
+      })
 
     return () => {
       abortController.abort()
