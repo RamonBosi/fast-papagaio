@@ -4,5 +4,12 @@ export async function findById(category,id){
 
   const productsByCategory = await getByCategory(category)
 
-  return productsByCategory.find((p) => p.id === id)
+  if(productsByCategory){
+
+    const thereProductWithId = productsByCategory.find((p) => p.id === id)
+
+    return thereProductWithId || null
+  }
+
+  return null
 }

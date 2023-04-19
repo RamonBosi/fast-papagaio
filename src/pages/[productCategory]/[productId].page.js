@@ -51,10 +51,17 @@ export async function getStaticProps(ctx) {
 
   const product = await productsApi.get(`${productCategory}/id/${productId}`)
 
+  if(product.data){
+
+    return {
+      props: {
+        productsInfo: product.data
+      },
+      revalidate: 5
+    }
+  }
+
   return {
-    props: {
-      productsInfo: product.data
-    },
-    revalidate: 5
+    notFound: true
   }
 }
