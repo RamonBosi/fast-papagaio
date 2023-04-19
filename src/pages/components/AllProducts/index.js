@@ -21,18 +21,18 @@ export const AllProducts = () => {
 
         const data = res.data
 
-        if(data){
+        if (data) {
 
           const createProductsCards = data.map((p) => {
-  
+
             return <Product key={p.id} productInfo={p} />
           })
-  
+
           setLoadProducts(createProductsCards)
         }
       })
-      .catch(() =>{
-        setLoadProducts(<RequestErrorWarning error={'Não foi possível encontrar os produtos da categoria escolhida'}/>)
+      .catch(() => {
+        setLoadProducts({ success: false })
       })
 
     return () => {
@@ -41,6 +41,14 @@ export const AllProducts = () => {
   }, [productCategory])
 
   if (loadProducts) {
+
+    if (!loadProducts.success) {
+      return (
+        <div className="d-flex justify-content-center">
+          <RequestErrorWarning error={'Não foi possível encontrar os produtos da categoria escolhida'} />
+        </div>
+      )
+    }
 
     return (
       <div className="d-flex flex-column flex-md-row gap-3">
