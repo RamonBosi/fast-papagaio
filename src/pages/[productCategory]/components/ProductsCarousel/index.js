@@ -4,6 +4,7 @@ import { Product } from './components/Product';
 import { ScProductCarousel } from './styles';
 import { Loading } from '@/components/Loading';
 import { productsApi } from '@/services/productsApi';
+import { RequestErrorWarning } from '@/components/RequestErrorWarning';
 
 export const ProductsCarousel = () => {
 
@@ -22,14 +23,23 @@ export const ProductsCarousel = () => {
       { signal: abortController.signal }
     )
       .then((res) => {
-        const createProducts = res.data.map((p) => {
 
-          return <Product key={p.id} size={100} productsInfo={p} />
-        })
+        const data = res.data
 
-        setLoadProducts(createProducts)
+        if(data){
+
+          const createProducts = data.map((p) => {
+  
+            return <Product key={p.id} size={100} productsInfo={p} />
+          })
+  
+          setLoadProducts(createProducts)
+        }
+
       })
-      .catch(() => null)
+      .catch(() => {
+        setLoadProducts(<RequestErrorWarning error={'Não existe produtos dessa categoria'}/>)
+      })
 
     return () => {
       abortController.abort()
