@@ -24,7 +24,7 @@ export default function ProductInformation({ productsInfo }) {
       <TagMain>
         <div className="d-flex flex-column gap-4">
           <ProductCard productsInfo={productsInfo} />
-          <ProductDescription />
+          <ProductDescription description={productsInfo.description}/>
           <ProductReviews />
           <div>
             <h2>Ofertas do dia</h2>
