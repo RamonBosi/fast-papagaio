@@ -16,7 +16,7 @@ export const AllProducts = () => {
 
     const abortController = new AbortController()
 
-    productsApi.get('productCategory', { signal: abortController.signal })
+    productsApi.get(productCategory, { signal: abortController.signal })
       .then((res) => {
 
         const data = res.data
@@ -28,7 +28,7 @@ export const AllProducts = () => {
             return <Product key={p.id} productInfo={p} />
           })
 
-          setLoadProducts(createProductsCards)
+          setLoadProducts({ success: true, createProductsCards })
         }
       })
       .catch(() => {
@@ -54,7 +54,7 @@ export const AllProducts = () => {
       <div className="d-flex flex-column flex-md-row gap-3">
         <ValueFilter />
         <ScAllProductGrid>
-          {loadProducts}
+          {loadProducts.createProductsCards}
         </ScAllProductGrid>
       </div>
     )
