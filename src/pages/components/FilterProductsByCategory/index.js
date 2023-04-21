@@ -1,11 +1,11 @@
-import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory"
+import { ProductsFilterContext } from "@/store/ProductsFilterContext"
 import { useContext } from "react"
 import Form from "react-bootstrap/Form"
 import { ScFilterProductsByCategory } from "./styles"
 
 export function FilterProductsByCategory() {
 
-  const { setProductCategory } = useContext(ContextFilterProductsByCategory)
+  const { setProductCategory } = useContext(ProductsFilterContext)
 
   const handlerProductCategory = (e) => {
     setProductCategory(e.target.value)

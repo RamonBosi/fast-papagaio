@@ -2,23 +2,24 @@ import { ScAllProductGrid } from "./styles"
 import { ValueFilter } from "../ValueFilter"
 import { useContext, useEffect, useState } from "react"
 import { Product } from "./Product"
-import { ContextFilterProductsByCategory } from "@/store/ContextFilterProductsByCategory";
+import { ProductsFilterContext } from "@/store/ProductsFilterContext";
 import { Loading } from "@/components/Loading";
 import { productsApi } from "@/services/productsApi";
 import { RequestErrorWarning } from "@/components/RequestErrorWarning";
 
 export const AllProducts = () => {
 
-  const { productCategory } = useContext(ContextFilterProductsByCategory)
+  const { productCategory } = useContext(ProductsFilterContext)
   const [loadProducts, setLoadProducts] = useState(null)
 
   useEffect(() => {
 
     const abortController = new AbortController()
 
-    productsApi.get(productCategory, { signal: abortController.signal })
+    productsApi.post(`${productCategory}/filter`, 
+    { byValue: null }, 
+    { signal: abortController.signal })
       .then((res) => {
-
         const data = res.data
 
         if (data) {
