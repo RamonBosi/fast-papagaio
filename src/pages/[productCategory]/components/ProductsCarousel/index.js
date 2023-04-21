@@ -34,6 +34,8 @@ export const ProductsCarousel = () => {
           })
   
           setLoadProducts(createProducts)
+        }else{
+          setLoadProducts(<RequestErrorWarning error={'Não existe produtos dessa categoria'}/>)
         }
 
       })

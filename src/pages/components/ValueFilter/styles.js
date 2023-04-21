@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ScValueFilter = styled.div`
+export const ScValueFilter = styled.form`
   border:2px solid rgba(83, 62, 133);
   border-radius: 5px;
   width:100%;

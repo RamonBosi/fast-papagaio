@@ -17,7 +17,7 @@ export default async function filterCategoryProductsBy(req, res) {
 
         const { min, max } = activeFilters.byValue
         
-        return res.status(200).json(filterByValue(products, Number(min), Number(max)))
+        return res.status(200).json(filterByValue(products, min, max))
       }
 
       return res.status(200).json(products)

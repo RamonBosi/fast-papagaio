@@ -10,7 +10,7 @@ export function filterByValue(products,min,max){
     return null
   }
 
-  if(min || min !== 0){
+  if(min){
 
     return products.filter((p) => p.value >= min)
   }

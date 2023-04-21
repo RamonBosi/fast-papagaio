@@ -22,7 +22,7 @@ export const AllProducts = () => {
       .then((res) => {
         const data = res.data
 
-        if (data) {
+        if (data.length) {
 
           const createProductsCards = data.map((p) => {
 

@@ -12,7 +12,8 @@ export const ValueFilter = () => {
   const minRef = useRef()
   const maxRef = useRef()
 
-  const filterByValue = () => {
+  const filterByValue = (e) => {
+    e.preventDefault()
 
     const min = minRef.current.value
     const max = maxRef.current.value
@@ -21,25 +22,28 @@ export const ValueFilter = () => {
 
       handlerActiveFilters({ byValue: { min, max } })
     }
+  }
 
+  const resetFilter = () => {
+    handlerActiveFilters({ byValue: false })
   }
 
   return (
-    <ScValueFilter className="d-flex flex-column align-self-center align-self-md-start gap-1 p-2">
+    <ScValueFilter className="d-flex flex-column align-self-center align-self-md-start gap-1 p-2" onSubmit={filterByValue}>
       <h5 className="align-self-center">Filtrar por valor</h5>
       <ScInputs className="d-flex flex-column gap-2">
         <div className="d-flex gap-1 align-items-center">
           <label>Mínimo</label>
-          <input type={'number'} ref={minRef} />
+          <input type={'number'} ref={minRef} min={1} />
         </div>
         <div className="d-flex gap-1 align-items-center">
           <label>Máximo</label>
-          <input type={'number'} ref={maxRef} />
+          <input type={'number'} ref={maxRef} min={1} />
         </div>
       </ScInputs>
       <div className="d-flex gap-2">
-        <ScButton theme={primaryButton} onClick={filterByValue}>Filtrar</ScButton>
-        <ScButton theme={secundaryButton}>Resetar</ScButton>
+        <ScButton theme={primaryButton} type="submit">Filtrar</ScButton>
+        <ScButton theme={secundaryButton} type="reset" onClick={resetFilter}>Resetar</ScButton>
       </div>
     </ScValueFilter>
   )
