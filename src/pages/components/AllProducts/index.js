@@ -9,7 +9,7 @@ import { RequestErrorWarning } from "@/components/RequestErrorWarning";
 
 export const AllProducts = () => {
 
-  const { productCategory } = useContext(ProductsFilterContext)
+  const { productCategory,activeFilters } = useContext(ProductsFilterContext)
   const [loadProducts, setLoadProducts] = useState(null)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const AllProducts = () => {
     const abortController = new AbortController()
 
     productsApi.post(`${productCategory}/filter`, 
-    { byValue: null }, 
+    activeFilters, 
     { signal: abortController.signal })
       .then((res) => {
         const data = res.data
@@ -30,6 +30,8 @@ export const AllProducts = () => {
           })
 
           setLoadProducts({ success: true, createProductsCards })
+        }else{
+          setLoadProducts({ success: false })
         }
       })
       .catch(() => {
@@ -39,14 +41,15 @@ export const AllProducts = () => {
     return () => {
       abortController.abort()
     }
-  }, [productCategory])
+  }, [productCategory,activeFilters])
 
   if (loadProducts) {
 
     if (!loadProducts.success) {
       return (
-        <div className="d-flex justify-content-center">
-          <RequestErrorWarning error={'Não foi possível encontrar os produtos da categoria escolhida'} />
+        <div className="d-flex flex-column flex-md-row gap-3">
+          <ValueFilter />
+          <RequestErrorWarning error={'Não foi possível encontrar os produtos que correspondem com os filtros aplicados'} />
         </div>
       )
     }

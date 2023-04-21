@@ -5,10 +5,18 @@ export const ProductsFilterContext = createContext()
 export const ProductsFilterContextProvider = ({ children }) => {
 
   const [productCategory, setProductCategory] = useState('notebook')
+  const [activeFilters, setActiveFilters] = useState({})
+
+  const handlerActiveFilters = (newFilter) => {
+
+    setActiveFilters((prevFilter) => ({ ...prevFilter, ...newFilter }))
+  }
 
   const value = {
     productCategory,
-    setProductCategory
+    setProductCategory,
+    activeFilters,
+    handlerActiveFilters
   }
 
   return (
