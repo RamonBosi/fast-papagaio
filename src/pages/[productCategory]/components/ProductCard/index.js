@@ -5,8 +5,11 @@ import { secundaryButton } from '@/styles/styledComponents/components/Button/the
 import { ScImageContainer } from './styles'
 import { QuantitySelector } from '@/components/QuantitySelector'
 import { RatingStars } from '@/components/RatingStars'
+import { useRef } from 'react'
 
 export const ProductCard = ({ productsInfo }) => {
+
+  const QuantitySelectorRef = useRef()
 
   return (
     <div className='d-flex flex-column flex-sm-row gap-2 mx-auto'>
@@ -17,11 +20,11 @@ export const ProductCard = ({ productsInfo }) => {
       </div>
       <div className='d-flex flex-column gap-2'>
         <h1 className='m-0 text-break'>{productsInfo.productName}</h1>
-        <RatingStars stars={productsInfo.stars} theme={'primary'}/>
+        <RatingStars stars={productsInfo.stars} theme={'primary'} />
         <strong className='fs-3'>R${productsInfo.value},00</strong>
-        <QuantitySelector />
+        <QuantitySelector ref={QuantitySelectorRef} />
         <div className='d-flex gap-2 fs-4'>
-          <ScButton theme={primaryButton}>Comprar</ScButton>
+          <ScButton theme={primaryButton} onClick={() => console.log(QuantitySelectorRef.current.value)}>Comprar</ScButton>
           <ScButton theme={secundaryButton}>Adicionar ao carrinho</ScButton>
         </div>
       </div>
