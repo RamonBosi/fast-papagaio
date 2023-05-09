@@ -2,32 +2,17 @@ import { useEffect, useState } from "react"
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Link from "next/link";
-
-import jsonProducts from '@/mocks/products.json'
 import { Product } from "./Product"
 import { ScButton } from "@/styles/styledComponents/components/Button"
 import { primaryButton } from "@/styles/styledComponents/components/Button/theme/primaryButton"
 import { ScCupomInput } from "./styles"
 import { secundaryButton } from "@/styles/styledComponents/components/Button/theme/secundaryButton"
+import { useRouter } from "next/router";
 
 export function AllProducts() {
 
   const [loadProducts, setLoadProducts] = useState(null)
-
-  useEffect(() => {
-
-    const productsComponents = jsonProducts.map((p) => {
-
-      return <Product
-        key={p.id}
-        name={p.nomeProduto}
-        value={p.valor}
-        amount={p.quantidade} />
-    })
-
-    setLoadProducts(() => productsComponents)
-
-  }, [])
+  const router = useRouter()
 
   return (
     <div className="d-flex flex-column gap-2">

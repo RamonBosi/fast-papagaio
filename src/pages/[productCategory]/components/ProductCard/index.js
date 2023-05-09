@@ -7,11 +7,13 @@ import { QuantitySelector } from '@/components/QuantitySelector'
 import { RatingStars } from '@/components/RatingStars'
 import { useEffect, useRef, useState } from 'react'
 import { quantitySelectorValidation } from '@/components/QuantitySelector/utils/quantitySelectorValidation'
+import { useRouter } from 'next/router'
 
 export const ProductCard = ({ productsInfo }) => {
 
   const quantitySelectorRef = useRef()
   const [purchaseQuantityError, setPurchaseQuantityError] = useState(null)
+  const router = useRouter()
 
   const setProduct = async (action) => {
 
@@ -22,13 +24,13 @@ export const ProductCard = ({ productsInfo }) => {
     if (validate.success) {
 
       const selectedQuantityIsAvailableInStock = quantitySelectorValue <= productsInfo.amount
-      
+
       if (selectedQuantityIsAvailableInStock) {
 
         if (action === 'buy') {
-          console.log('produto comprado')
+          router.push(`/carrinho-de-compra/comprar/um-produto?categoria=${productsInfo.productCategory}&idProduto=${productsInfo.id}`)
         } else {
-          console.log('produto adcionado ao carrinho de compra')
+          router.push(`/carrinho-de-compra/comprar/varios-produtos`)
         }
       }else{
 
