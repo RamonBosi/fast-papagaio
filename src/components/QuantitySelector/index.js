@@ -1,22 +1,28 @@
 import { forwardRef } from "react";
 import { ScQuantitySelector } from "./styles";
+import { quantitySelectorValidation } from "./utils/quantitySelectorValidation";
 
-export const QuantitySelector = forwardRef(function (props,ref) {
+export const QuantitySelector = forwardRef(function (props, ref) {
 
-  const setAmount = (action) => {
+  const setAmount = async (action) => {
 
-    const currentValue = ref.current.value
+    const quantitySelectorValue = Number(ref.current.value)
 
     if (action === 'add') {
 
-      ref.current.value = Number(currentValue) + 1
+      const validate = await quantitySelectorValidation({ quantityPurchased: quantitySelectorValue })
+
+      if (validate.success) {
+
+        ref.current.value = quantitySelectorValue + 1
+      }
     } else {
 
-      const valueIsGreaterThanOrEqualtoOne = !!(Number(currentValue) - 1)
+      const validate = await quantitySelectorValidation({ quantityPurchased: quantitySelectorValue - 1 })
 
-      if(valueIsGreaterThanOrEqualtoOne){
+      if (validate.success) {
 
-        ref.current.value = Number(currentValue) - 1
+        ref.current.value = quantitySelectorValue - 1
       }
     }
   }
