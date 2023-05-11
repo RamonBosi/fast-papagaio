@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Link from "next/link";
@@ -7,12 +7,18 @@ import { ScButton } from "@/styles/styledComponents/components/Button"
 import { primaryButton } from "@/styles/styledComponents/components/Button/theme/primaryButton"
 import { ScCupomInput } from "./styles"
 import { secundaryButton } from "@/styles/styledComponents/components/Button/theme/secundaryButton"
-import { useRouter } from "next/router";
+import { ShoppingCartContext } from "@/store/ShoppingCartContext";
 
 export function AllProducts() {
 
   const [loadProducts, setLoadProducts] = useState(null)
-  const router = useRouter()
+
+  const { getShoppingCartCache,createShoppingCartCache,addProduct } = useContext(ShoppingCartContext)
+
+  useEffect(() => {
+    createShoppingCartCache()
+    addProduct(['ramon'])
+  }, [])
 
   return (
     <div className="d-flex flex-column gap-2">

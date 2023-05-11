@@ -3,6 +3,7 @@ import { MyNavBar } from "@/components/MyNavBar";
 import { TagMain } from "@/components/TagMain";
 import { AllProducts } from "../components/AllProducts";
 import { productsApi } from "@/services/productsApi";
+import { ShoppingCartContextProvider } from "@/store/ShoppingCartContext";
 
 export default function ShoppingCart(propsPage) {
 
@@ -11,7 +12,9 @@ export default function ShoppingCart(propsPage) {
       <MyNavBar />
       <TagMain>
         <h1 className="align-self-center mb-3">Carrinho de compras</h1>
-        <AllProducts />
+        <ShoppingCartContextProvider>
+          <AllProducts />
+        </ShoppingCartContextProvider>
       </TagMain>
       <MyFooter />
     </>
